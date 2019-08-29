@@ -1,5 +1,16 @@
 class Matrix:
-    
+
+# transpose
+
+# soma em matrix 
+# menos com matrix
+# mumtiplicação matrix
+
+# soma escalar
+# subtração escalar
+# divisão escalar
+# multiplicação escalar
+
     def __init__(self, rows, cols, data = []):
         self.rows = rows
         self.cols = cols
@@ -51,6 +62,7 @@ class Matrix:
                 except ZeroDivisionError:
                     print("Divisão por zero, NOPE!!")
         return res
+
 
     def dot(self, b):
         pass
