@@ -51,5 +51,16 @@ class Matrix:
                 except ZeroDivisionError:
                     print("Divisão por zero, NOPE!!")
         return res
-    
 
+    def dot(self, b):
+        pass
+
+
+    def solve(self):
+        pass
+
+
+# class test
+if __name__ == '__main__':
+    a = Matrix(2,2,(1,1,1,1))
+    b = Matrix(2,2,(2,2,2,2))
