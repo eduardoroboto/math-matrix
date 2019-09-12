@@ -131,6 +131,21 @@ class Matrix:
         
         return new_matrix
 
+    def get_first_one(self,value,posx,posy,):
+        if posy < posx:
+            for x in range(1, self.rows):
+                if self[x,posy] == 1:
+                    print("busc su",x,posy)
+                    return self[x]
+        elif posy > posx:
+            for x in range(self.rows, 0 , -1):
+                print("pos",x,posy)
+                if self[x,posy] == 1:
+                    print("busc in",x,posy)
+                    return self[x]
+
+
+
     def one_ladder_check(self):
         for i in range(1, self.cols):
             if self[i,i] != 1:
@@ -149,43 +164,46 @@ class Matrix:
 # Pegar cada posicao for com 1,1 e continuar se ele for 1 continue se nao de swap
 
     def gauss(self):
-        while not(self.one_ladder_check()) or not(self.zeroes_triangle()):
-            print("Entrou")
-            if self.rows+1 != self.cols:
-                raise ValueError("Matrix invalida, tem que ser uma matrix NxN+1")
+        print("Entrou")
+        if self.rows+1 != self.cols:
+            raise ValueError("Matrix invalida, tem que ser uma matrix NxN+1")
 
-            for i in range(1, self.cols):
-                print(self)
+        for i in range(1, self.cols):
+            print(self)
 
 
-                if self[i,i] == 0 :
-                    for j in range(i+1, self.rows + 1):
-                        if self[j,i] > self[i,i]:
-                            self[i,i] ,self[i,j] =  self[j,i], self[i,i]
-                            break
-
-                if self[i,i] != 1:
-                    #faz a multiplicao pelo valor da linha sobre 1 (o_O)
-                    self[i] = [value * (1/self[i,i]) for value in self[i]]
-
+            if self[i,i] == 0 :
                 for j in range(i+1, self.rows + 1):
-                    if self[j,i] != 0:
-                        #self[j] = [value + (-1 * value) for value in self[j]]
+                    if self[j,i] > self[i,i]:
+                        self[i,i] ,self[i,j] =  self[j,i], self[i,i]
+                        break
 
-                        self[j] = [value + (-1 * self[j,i]) for value in self[j]]
+            if self[i,i] != 1:
+                #faz a multiplicao pelo valor da linha sobre 1
+                self[i] = [value * (1/self[i,i]) for value in self[i]]
+
+            for j in range(i+1, self.rows + 1):
+                if self[j,i] != 0:
+                    linha = [ ((-1*self[j,i]) * value) for value in self.get_first_one(self[j,i],j,i)]
+                    self [j] = [x + y for x ,y in zip(self[j], linha)]
+
+        print(self)
+        print("Indo zerar")
+    #   faz no triangulo superior.
+        for j in range(self.cols - 1, 0, -1):
+             for i in range(j - 1, 0 , -1):
+                if self[i,j] != 0:
+                    print("d\n",self)
+                    print("tri",i,j)
+                    print(self.get_first_one(self[i,j],i,j))
+                    linha = [ ((-1*self[i,j]) * value) for value in self.get_first_one(self[i,j],i,j)]
+                    self [i] = [x + y for x ,y in zip(self[i], linha)]
+                
 
 
-            for j in range(self.cols - 1, 0, -1):
-                for i in range(j - 1, 0 , -1):
-                    if self[j,i] != 0:
-                        self[j] = [value + (-1 * self[j,i]) for value in self[j]]
 
-                    
-
-
-
-            # troca de matriz
-            # self[max_row], self[i] = self[i], self[max_row]
+        # troca de matriz
+        # self[max_row], self[i] = self[i], self[max_row]
                     
 
 
@@ -198,7 +216,6 @@ if __name__ == '__main__':
     # a = Matrix(3,4,[1,-1,2,2,2,1,-1,1,-2,-5,3,3])
     a = Matrix(3,4,[1,3,1,9,1,1,-1,1,3,11,5,35])
     a = Matrix(3,4,[1,-2,1,0,0,2,-8,8,5,0,-5,10])
-
 
     # b =  Matrix(3,2,[2,0,1,-1,3,5])
     
