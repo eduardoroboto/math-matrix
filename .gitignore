@@ -1,2 +1,6 @@
+.vscode/*
+Arquivos Python.zip
 exemplo.py
 old_try.py
+__pycache__/*
+output.txt
