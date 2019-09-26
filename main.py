@@ -38,7 +38,7 @@ if __name__ == '__main__':
     
     #Situação especifica em que o x3 não importa (gratis)
     #a = Matrix(3,4,[1,3,1,9,1,1,-1,1,3,11,5,35])
-    #a = Matrix(3,4,[1,-2,1,0,0,2,-8,8,5,0,-5,10])
+    a = Matrix(3,4,[1,-2,1,0,0,2,-8,8,5,0,-5,10])
 
     # b =  Matrix(3,2,[2,0,1,-1,3,5])
     
@@ -47,7 +47,7 @@ if __name__ == '__main__':
     #print(a.gauss())
     # a[1],a[2] = a[2],a[1]
     #print(a)
-    #a.gauss_jordan()
+    c = a.gauss_jordan()
     #print(a)
     # a.gauss()
     # c = a.dot(b)
@@ -59,10 +59,17 @@ if __name__ == '__main__':
     #teste 2 ok
     #a[3,3] = 5
 
-    a = Matrix(3, 3, [1, 2, 3, 4, 5, 6, 7, 8, 9])
-    b = Matrix(2, 2, [10, 20, 30, 40])
+    #a = Matrix(3, 3, [1, 2, 3, 4, 5, 6, 7, 8, 9])
+    #b = Matrix(2, 2, [10, 20, 30, 40])
+    #a =  Matrix(3, 3, [1,-2, 3, 3,-8,11,-4, 6,-7])
+    #c = a.inverse()
 
-    c = a.inverse()
 
-    print("{}\n{}".format(a,c))
+    #d = c.dot(a)
+
+    print(a)
+    print(c)
+    #rint(d)
+
+    #print("{}\n{}".format(a,c))
  
