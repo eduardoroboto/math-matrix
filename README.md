@@ -1,3 +1,8 @@
-# matrix_trabalho
+# Trabalho de Algebra e Geometria Computacional
 
-Lembrar de conectar o HD e passar o codigo do outro trabalho para esse notebook.
+O trabalho envolve o desenvolvimento de uma biblioteca que implementa o conceito de Matrix e permite declaralas e fazer calculos matematicos com elas.
+
+
+TODO LIST:
+* Matriz Inversa.
+* LU LDU.
